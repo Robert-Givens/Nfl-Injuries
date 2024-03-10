@@ -11,13 +11,13 @@ status['out'] = np.where(status['Active_Inactive'] == "Out", 1, 0)
 # Calculate the average snap rate for each category for each player who is out
 status_in = status[status['out'] == 0]
 # Calculate the average snap rate for each category for each player and season where 'out' is 0
-player_avg = status_in.groupby(['name_abbr', 'Season'])[['Offense.Snap.Rate', 'Defense.Snap.Rate', 'Special.Teams.Snap.Rate']].mean().reset_index()
+player_avg = status_in.groupby(['name_abbr', 'Season'])[['Offense_Snap_Rate', 'Defense_Snap_Rate', 'Special_Teams_Snap_Rate']].mean().reset_index()
 
 # Rename the columns
 player_avg.rename(columns={
-    'Offense.Snap.Rate': 'average_offense_snap_rate', 
-    'Defense.Snap.Rate': 'average_defense_snap_rate', 
-    'Special.Teams.Snap.Rate': 'average_special_teams_snap_rate'}, inplace=True)
+    'Offense_Snap_Rate': 'average_offense_snap_rate', 
+    'Defense_Snap_Rate': 'average_defense_snap_rate', 
+    'Special_Teams_Snap_Rate': 'average_special_teams_snap_rate'}, inplace=True)
 
 # Merge this new data with status
 status = pd.merge(status, player_avg, on=['name_abbr', 'Season'], how='left')
@@ -25,9 +25,9 @@ status = pd.merge(status, player_avg, on=['name_abbr', 'Season'], how='left')
 # Add Player Age at the start of the season
 status['age'] = status.groupby(['Team', 'Season'])['Age_Start_Season'].transform('mean')
 out = status.groupby(['Team', 'Season', 'Week', 'age']).agg({
-    'Offense.Snap.Rate': 'sum',
-    'Defense.Snap.Rate': 'sum',
-    'Special.Teams.Snap.Rate': 'sum',
+    'Offense_Snap_Rate': 'sum',
+    'Defense_Snap_Rate': 'sum',
+    'Special_Teams_Snap_Rate': 'sum',
     'out': 'sum'  # Summing the 'out' instances
 }).reset_index()
 
