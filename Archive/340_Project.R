@@ -7,8 +7,8 @@ library(stargazer)
 ################################################################################
 
 # Load datasets
-results <- read_excel("NFL Schedule.xlsx")
-status <- read_excel("NFL Player Status.xlsx")
+results <- read_excel("Data/Raw/NFL Schedule.xlsx")
+status <- read_excel("Data/Raw/NFL Player Status.xlsx")
 
 # Create injury data at team-week-season level
 out <- status %>%
