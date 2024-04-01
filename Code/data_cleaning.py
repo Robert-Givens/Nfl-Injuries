@@ -24,12 +24,12 @@ out_players = status[status['out'] == 1]
 
 # Mapping of positions to buckets
 position_to_bucket = {
-    'RB': 'RB', 'SS': 'DB', 'LB': 'LB', 'DB': 'DB', 'DT': 'DT',
-    'MLB': 'LB', 'FB': 'RB', 'DE': 'DE', 'TE': 'TE', 'CB': 'CB',
-    'WR': 'WR', 'P': 'P', 'OLB': 'LB', 'OT': 'OT', 'OG': 'OG',
-    'FS': 'FS', 'LS': 'LS', 'QB': 'QB', 'C': 'C', 'ILB': 'LB',
-    'NT': 'DT', 'K': 'K', 'SAF': 'SS', 'G': 'OG',
-    'T': 'OT', 'DL': 'DL', 'PR': 'K'
+    'RB': 'RB', 'SS': 'DB', 'LB': 'LB', 'DB': 'DB', 'DT': 'DL',
+    'MLB': 'LB', 'FB': 'RB', 'DE': 'DL', 'TE': 'TE', 'CB': 'DB',
+    'WR': 'WR', 'P': 'P', 'OLB': 'LB', 'OT': 'OL', 'OG': 'OL',
+    'FS': 'DB', 'LS': 'LS', 'QB': 'QB', 'C': 'OL', 'ILB': 'LB',
+    'NT': 'DL', 'K': 'K', 'SAF': 'DB', 'G': 'OL',
+    'T': 'OL', 'DL': 'DL', 'PR': 'K'
 }
 
 # Apply the mapping to categorize the positions
@@ -41,8 +41,7 @@ position_dummies = pd.get_dummies(out_players['position'])
 out_players = pd.concat([out_players, position_dummies], axis=1)
 
 # Create dummy variables for different player positions
-positions = ['RB', 'CB', 'FS', 'LB', 'DT', 'DE', 'TE', 'WR', 'P', 'OT',
-             'OG', 'LS', 'QB', 'K']
+positions = ['RB', 'DB', 'LB', 'DL', 'TE', 'WR', 'P', 'OL', 'LS', 'QB', 'K']
 
 # Perform aggregation on 'out_players' DataFrame without considering 'out' status
 # For each position, we use the max aggregation to indicate presence (1) or absence (0) of that position
@@ -53,7 +52,7 @@ aggregated_data = out_players.groupby(['Team', 'Season', 'Week']).agg({
 }).reset_index()
 
 # Convert boolean columns to integers
-position_columns = ['RB', 'CB', 'FS', 'LB', 'DT', 'DE', 'TE', 'WR', 'P', 'OT', 'OG', 'LS', 'QB', 'K']
+position_columns = ['RB', 'DB', 'LB', 'DL', 'TE', 'WR', 'P', 'OL', 'LS', 'QB', 'K']
 aggregated_data[position_columns] = aggregated_data[position_columns].astype(int)
 
 # Merge with the 'cap' DataFrame to include the age variable
