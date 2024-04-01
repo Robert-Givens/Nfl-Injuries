@@ -1,0 +1,81 @@
+---
+title: What Effect Do Injuries Have on NFL Teams
+format:
+  poster-typst: 
+    size: "48x36"
+    poster-authors: "Robert Givens"
+    departments: "Department of Economics"
+    institution-logo: "./images/csuf.png"
+    footer-text: "NCUR 2023"
+    footer-url: "https://github.com/Robert-Givens/Nfl-Injuries.git"
+    footer-emails: "Robert.U.Givens@gmail.com"
+    footer-color: "ebcfb2"
+---
+
+# Abstract
+
+This particular research will explain the complex dynamics of how injuries affect win probabilities within the National Football League (NFL), an area within which athleticism and strategic gameplay are combined, highlighted by the spectacle of adrenaline-driven excitement of each game. With inevitable injury in both an unpredictable fact of professional football, the impact on team performance and larger elements of season storylines. This study tries to address to what extent injuries influence a team's chance of winning. This is a question that is poised at the crossroads of sport science, strategy, and player welfare. n\n\
+
+Injuries really challenge a team since from the minor impairments to the serious season-ending damages, they may change strategies and change the game results. Our analysis unveils a negative correlation between the statistical relationship of the presence of injuries against win probabilities, quantified as the variable "out. Specifically, for every increase in the "out" variable, there is a slight decrease in the odds of how much more a team is likely to win, which proves that a slight changing factor, such as injury, would disrupt the potential outcomes of the level of success for the team. The effect size is moderate, but the results highlight that the availability of players is highly related to the outcome of a match.
+
+However, the study recognizes the fact that it wasn't possible to include variables like the player's quality and the strength of the opponent, which might further ascertain the effects of the injuries in a more nuanced manner. There is thus significance that can be drawn from this study within a wider perspective of team dynamics and strategy. This thus forms a foundational perspective for future investigations, aiming at being able to understand in entirety the role that injuries play in shaping NFL outcomes.
+
+# Exploring Data
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri.
+
+![Heat Map of Injuries](./images/heatmap.png){width="50%"}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.
+
+| Lorem ipsum dolor sit. | Lorem ipsum. | Lorem ipsum. |
+|------------------------|--------------|--------------|
+| Lorem ipsum dolor.     | Lorem ipsum. | $\alpha$     |
+| Lorem ipsum.           | Lorem ipsum. | $\beta$      |
+| Lorem.                 | Lorem.       | $\gamma$     |
+| Lorem ipsum dolor.     | Lorem.       | $\theta$     |
+
+: Lorem ipsum dolor sit amet {#tbl-1}
+
+Lorem @tbl-1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et.
+
+## Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre.
+
+# Lorem ipsum dolor.
+
+::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplifi- carique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et.
+
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+
+:::
+
+## Lorem ipsum etiam
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. 
+
+## Lorem ipsum possimus
+
+Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et collaudata est, cum id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, om- nis dolor repellendus. Temporibus autem quibusdam et.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. 
+
+![Temperature and ozone level](images/fig-airquality-1.svg)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et collaudata est, cum id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, om- nis dolor repellendus. Temporibus autem quibusdam et.
+
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+  - Lorem ipsum dolor sit amet.
+  -  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+  - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed. 
+  - Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+$$
+\sum_(k=1)^n k = \frac{(n(n+1))}{2} = \frac{(n^2 + n)}{2}
+$$
