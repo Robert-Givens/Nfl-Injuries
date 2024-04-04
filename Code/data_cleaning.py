@@ -9,6 +9,9 @@ status_p = pd.read_excel("Data/Raw/NFL Player Status.xlsx")
 # Create a binary 'out' column based on the 'Active_Inactive' status
 status_p['out'] = np.where(status_p['Active_Inactive'] == "Out", 1, 0)
 
+# Filter for only regular season
+status_p = status_p[status_p['Week'].between(1, 17)]
+
 # Creating a checkpoint
 status = status_p.copy()
 
@@ -94,6 +97,9 @@ finaldata.columns = [col.lower() for col in finaldata.columns]
 
 # Filter out 2015
 finaldata = finaldata[finaldata['season'] != 2012]
+
+#Drop Nas
+finaldata = finaldata.dropna(subset=['out'])
 
 # Export to CSV
 finaldata.to_csv("Data/Clean/final_data.csv", index=False)

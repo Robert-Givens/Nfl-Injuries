@@ -43,13 +43,16 @@
   num_columns: "3",
 
   // University logo's scale (in %).
-  univ_logo_scale: "100",
+  univ_logo_scale: "75",
 
   // University logo's column size (in in).
-  univ_logo_column_size: "10",
+  univ_logo_column_size: "16",
 
   // Title and authors' column size (in in).
-  title_column_size: "20",
+  title_column_size: "16",
+
+  // Third column
+  third_column_size: "16",
 
   // Poster title's font size (in pt).
   title_font_size: "48",
@@ -67,7 +70,7 @@
   body
 ) = {
   // Set the body font.
-  set text(font: "STIX Two Text", size: 16pt)
+  set text(font: "STIX Two Text", size: 30pt)
   let sizes = size.split("x")
   let width = int(sizes.at(0)) * 1in
   let height = int(sizes.at(1)) * 1in
@@ -77,6 +80,7 @@
   num_columns = int(num_columns)
   univ_logo_column_size = int(univ_logo_column_size) * 1in
   title_column_size = int(title_column_size) * 1in
+  third_column_size = int(third_column_size) * 1in
   footer_url_font_size = int(footer_url_font_size) * 1pt
   footer_text_font_size = int(footer_text_font_size) * 1pt
 
@@ -162,10 +166,10 @@
   // Arranging the logo, title, authors, and department in the header.
   align(center,
     grid(
-      rows: 2,
-      columns: (univ_logo_column_size, title_column_size),
+      rows: 3,
+      columns: (univ_logo_column_size, title_column_size,third_column_size),
       column-gutter: 0pt,
-      row-gutter: 50pt,
+      row-gutter: 10pt,
       image(univ_logo, width: univ_logo_scale),
       text(title_font_size, title + "\n\n") + 
       text(authors_font_size, emph(authors) + 

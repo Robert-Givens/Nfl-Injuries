@@ -11,11 +11,11 @@ from IPython.core.display import HTML
 finaldata = pd.read_csv("Data/Clean/final_data.csv")
 
 # Group by 'win' and calculate mean for 'out'
-tab = finaldata.groupby('ot')['win'].mean().reset_index()
-sns.barplot(x='ot', y='win', data=tab)
+tab = finaldata.groupby('ol')['win'].mean().reset_index()
+sns.barplot(x='ol', y='win', data=tab)
 plt.show()
 
-finaldata['de'].value_counts()
+finaldata['dl'].value_counts()
 
 finaldata["out"].describe()
 
@@ -25,14 +25,41 @@ sns.distplot(finaldata["out"])
 plt.title('Distribution of "out"')
 plt.xlabel('"out" values')
 plt.ylabel('Frequency')
-plt.savefig()
+plt.savefig("Output/position_win.png")
+plt.show()
+
+# Attempting a different approach to correctly aggregate and visualize the data without causing column mismatch errors
+
+# Aggregate the win percentages by position and injury status directly within the plotting command
+position_columns = ['rb', 'db', 'ol', 'lb', 'dl', 'qb','k']
+position_win_percs = []
+
+for position in position_columns:
+    # Compute average win percentage for each injury status (0 or 1) in the position
+    for status in [0, 1]:
+        avg_win_perc = finaldata[finaldata[position] == status]['win_perc'].mean()
+        position_win_percs.append([position, status, avg_win_perc])
+
+# Convert the aggregated data into a DataFrame
+position_win_percs_df = pd.DataFrame(position_win_percs, columns=['Position', 'Injury Status', 'Average Win Percentage'])
+
+# Plotting the corrected data
+plt.figure(figsize=(14, 8))
+sns.barplot(x='Position', y='Average Win Percentage', hue='Injury Status', data=position_win_percs_df)
+
+plt.title('Impact of Injuries on Win Percentage by Position')
+plt.xlabel('Position')
+plt.ylabel('Average Win Percentage')
+plt.legend(title='Injury Status', labels=['No Injury', 'Injury Present'])
+plt.grid(True, which='major', linestyle='--', linewidth=0.5)
+plt.tight_layout()
+plt.savefig("poster/images/position_win.png")
 plt.show()
 
 
-
 # List of positions for which we want to generate the heatmap
-positions_list = ['rb', 'cb', 'fs', 'lb', 'dt', 'de', 'te', 'wr', 'p', 'ot',
-                  'og', 'ls', 'qb', 'k']
+positions_list = ['rb', 'db', 'lb', 'dl', 'te', 'wr', 'p', 'ol',
+                  'ls', 'qb', 'k']
 
 # Initialize a matrix for average win rates
 win_rates = np.zeros((len(positions_list), int(finaldata[positions_list].max().max()) + 1))
@@ -106,3 +133,4 @@ dfoutput = summary_col([glm_model1, glm_model2, glm_model3, glm_model4, glm_mode
                        regressor_order=['Intercept', 'out', 'age', 'lag_win_perc', 'win_perc'])
 
 print(dfoutput)
+
