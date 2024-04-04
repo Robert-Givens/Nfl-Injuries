@@ -37,6 +37,8 @@ When assessing the weights and statistical significance, it becomes evident that
 
 # Model
 :::{.block fill="luma(230)" inset="8pt" radius="4pt"}
-
+- Logistic Regression Model
+- Controlling for Team Effects
+- Position Dummy variables
 
 :::

@@ -185,10 +185,4 @@
   // Display the keywords.
   if keywords != () [
       #set text(24pt, weight: 400)
-      #show "Keywords": smallcaps
-      *Keywords* --- #keywords.join(", ")
-  ]
-
-  // Display the poster's contents.
-  body
-}
+      #show
