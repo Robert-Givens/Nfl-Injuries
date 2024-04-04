@@ -37,7 +37,7 @@ position_win_percs = []
 for position in position_columns:
     # Compute average win percentage for each injury status (0 or 1) in the position
     for status in [0, 1]:
-        avg_win_perc = finaldata[finaldata[position] == status]['win_perc'].mean()
+        avg_win_perc = finaldata[finaldata[position] == status]['win'].mean()
         position_win_percs.append([position, status, avg_win_perc])
 
 # Convert the aggregated data into a DataFrame

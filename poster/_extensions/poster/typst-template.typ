@@ -92,7 +92,7 @@
     margin: 
       (top: 1in, left: 2in, right: 2in, bottom: 2in),
     footer: [
-      #set align(center)
+      #set align(left)
       #set text(32pt)
       #block(
         fill: rgb(footer_color),
@@ -185,4 +185,10 @@
   // Display the keywords.
   if keywords != () [
       #set text(24pt, weight: 400)
-      #show
+      #show "Keywords": smallcaps
+      *Keywords* --- #keywords.join(", ")
+  ]
+
+  // Display the poster's contents.
+  body
+}

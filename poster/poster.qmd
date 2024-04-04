@@ -13,7 +13,7 @@ format:
 ---
 
 # Abstract
-
+<div class="space-20"></div>
 This study examines the impact of player injuries on NFL team win probabilities over the seasons 2013 to 2019. The research dissects the data by the number of injuries, overall team influence, and the effect at each position. The findings suggest that injuries have a variable impact on win probabilities, with certain positions showing a more pronounced effect.
 
 <div class="space-20"></div>
@@ -21,24 +21,4 @@ This study examines the impact of player injuries on NFL team win probabilities 
 
 # Exploring Position Level Data
 
-![Positional Injury Impact on Win Probability](./images/position_win.png){width="100%"}
-
-<div class="space-20"></div>
-
-The initial analysis at the position level indicates a general decline in win probability when injuries occur. However, the degree of impact varies significantly by position.
-
-![Weights and Statistical Significance by Positions](./images/regression_results_table.jpg){width="90%"}
-
-<div class="space-20"></div>
-
-When assessing the weights and statistical significance, it becomes evident that Running Backs (RB), Quarterbacks (QB), Wide Receivers (WR), and Kickers (K) show significant correlation with win probabilities. Surprisingly, Tight Ends (TE) and Linebackers (LB) exhibit positive weights, which is an intriguing aspect warranting further investigation.
-
-<div class="space-20"></div>
-
-# Model
-:::{.block fill="luma(230)" inset="8pt" radius="4pt"}
-- Logistic Regression Model
-- Controlling for Team Effects
-- Position Dummy variables
-
-:::
+![Positional Injury Impact on Win Probability](./images/position_win.png){width="100%"
