@@ -102,4 +102,4 @@ finaldata = finaldata[finaldata['season'] != 2012]
 finaldata = finaldata.dropna(subset=['out'])
 
 # Export to CSV
-fi
+finaldata.to_csv("Data/Clean/final_data.csv", index=False)

@@ -21,4 +21,66 @@ This study examines the impact of player injuries on NFL team win probabilities 
 
 # Exploring Position Level Data
 
-![Positional Injury Impact on Win Probability](./images/position_win.png){width="100%"
+![Positional Injury Impact on Win Probability](./images/position_win.png){width="100%"}
+
+
+
+![Weights and Statistical Significance by Positions](./images/regression_results_table.jpg){width="90%"}
+
+<div class="space-20"></div>
+
+## Key Findings on Position Impact
+
+- **Significant Impact**: QBs, RBs, WRs, and Kickers correlate strongly with win probabilities.
+- **Positive Surprises**: TEs and LBs show unexpected positive effects on wins.
+- **Insight**: Positions traditionally seen in support roles may have underrated contributions to team success.
+
+*All findings are statistically significant, highlighting areas for strategic team development.*
+<div class="space-20"></div>
+# Model
+
+<div class="space-20"></div>
+:::{.block fill="luma(230)" inset="8pt" radius="4pt"}
+
+To investigate the impact of injuries on team performance, we employed a logistic regression model. This model allowed us to control for team-specific effects and incorporate dummy variables for each position, indicating whether an injury was present.
+
+<div class="space-20"></div>
+
+The logistic regression equation can be represented as follows:
+
+<div class="space-20"></div>
+
+$$
+\log\left(\frac{P(Y=1)}{1-P(Y=1)}\right) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n
+$$
+
+<div class="space-20"></div>
+
+Where:
+- $P(Y=1)$ is the probability of a team winning given the set of predictors.
+- $\beta_0$ is the intercept.
+- $\beta_1, \beta_2, ..., \beta_n$ are the coefficients for each predictor $X_1, X_2, ..., X_n$, including team effects and injury status for each position.
+
+<div class="space-20"></div>
+
+This model allows us to quantify the impact of injuries across different positions on the likelihood of a team's win, adjusting for inherent team strengths and weaknesses.
+
+
+:::
+
+<div style="height: 10px;"></div>
+
+# Team Observations
+
+- **Worst Performers**: Cleveland, Jacksonville, Tampa Bay, and Washington, New York (G) were the lowest performing teams
+- **QB Injuries**: Cincinnati, Minnesota, Cleveland, Carolina, and Pittsburgh had the most injuries at QB
+- **Worst Ranked**: Top five in losses also show high ranks in injuries occurance across most significant positions.
+
+![Worst Teams and Ranks by Occurance of Injury in a Position Group](./images/team_position_summary_final_ranked_updated.jpg){width="100%"}
+
+
+# Conclusion
+
+Our findings highlight the nuanced impact of player injuries on NFL teams' performance. The logistic regression model revealed that certain positions are more critical to a team's win probability. This analysis contributes to a deeper understanding of strategic team management and injury prevention in professional sports.
+
+<div style="height: 50px;"></div>
