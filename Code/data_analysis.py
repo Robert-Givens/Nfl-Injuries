@@ -134,3 +134,31 @@ dfoutput = summary_col([glm_model1, glm_model2, glm_model3, glm_model4, glm_mode
 
 print(dfoutput)
 
+
+# Sum the injuries for the specified positions per week
+positions = ['rb', 'db', 'lb', 'dl', 'te', 'wr', 'p', 'ol', 'ls', 'qb', 'k']
+injuries_by_week = finaldata.groupby('week')[positions].sum()
+
+# Reset index to make 'week' a column again for easier plotting
+injuries_by_week.reset_index(inplace=True)
+
+injuries_by_week.head()
+# Set up the figure and axes for a large plot
+fig, ax = plt.subplots(figsize=(14, 8))
+
+# Plot each position as a separate line
+for position in positions:
+    ax.plot(injuries_by_week['week'], injuries_by_week[position], label=position)
+
+# Add some plot aesthetics
+ax.set_xlabel('Week', fontsize=14)
+ax.set_ylabel('Number of Injuries', fontsize=14)
+ax.set_title('Trend of Injuries per Week by Position', fontsize=16)
+ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+plt.xticks(injuries_by_week['week'])
+plt.grid(True)
+
+# Show plot
+plt.tight_layout()
+plt.savefig("./poster/images/injuries over season.png")
+plt.show()

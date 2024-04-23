@@ -2,7 +2,7 @@
 title: What Effect Do Injuries Have on NFL Teams
 format:
   poster-typst: 
-    size: "48x36"
+    size: "36x48"
     poster-authors: "Robert Givens"
     departments: "Department of Economics"
     institution-logo: "./images/csuf.png"
@@ -16,30 +16,24 @@ format:
 <div class="space-20"></div>
 This study examines the impact of player injuries on NFL team win probabilities over the seasons 2013 to 2019. The research dissects the data by the number of injuries, overall team influence, and the effect at each position. The findings suggest that injuries have a variable impact on win probabilities, with certain positions showing a more pronounced effect.
 
-<div class="space-20"></div>
-
-
 # Exploring Position Level Data
 
-![Positional Injury Impact on Win Probability](./images/position_win.png){width="100%"}
+![Averaging win variable (binary) when a position is hurt or not](./images/position_win.png){width="100%"}
 
+![Summing injury dummies over the course of a season](./images/injuries_over_season.png){width="100%"}
 
+# Exploring Team Level Data
 
-![Weights and Statistical Significance by Positions](./images/regression_results_table.jpg){width="90%"}
+- **Worst Performers**: Cleveland, Jacksonville, Tampa Bay, and Washington, New York (G) were the lowest performing teams
+- **QB Injuries**: Cincinnati, Minnesota, Cleveland, Carolina, and Pittsburgh had the most injuries at QB
+- **Worst Ranked**: Top five in losses also show high ranks in injuries occurance across most significant positions.
+
+![Worst Teams and Ranks by Occurance of Injury in a Position Group](./images/team_position_summary_final_ranked_updated.jpg){width="100%"}
 
 <div class="space-20"></div>
 
-## Key Findings on Position Impact
-
-- **Significant Impact**: QBs, RBs, WRs, and Kickers correlate strongly with win probabilities.
-- **Positive Surprises**: TEs and LBs show unexpected positive effects on wins.
-- **Insight**: Positions traditionally seen in support roles may have underrated contributions to team success.
-
-*All findings are statistically significant, highlighting areas for strategic team development.*
-<div class="space-20"></div>
 # Model
 
-<div class="space-20"></div>
 :::{.block fill="luma(230)" inset="8pt" radius="4pt"}
 
 To investigate the impact of injuries on team performance, we employed a logistic regression model. This model allowed us to control for team-specific effects and incorporate dummy variables for each position, indicating whether an injury was present.
@@ -68,16 +62,22 @@ This model allows us to quantify the impact of injuries across different positio
 
 :::
 
-<div style="height: 10px;"></div>
+## Looking at interactions for siginficant positions
 
-# Team Observations
+![Weights and Statistical Significance by Positions](./images/regression_results_table.jpg){width="90%"}
 
-- **Worst Performers**: Cleveland, Jacksonville, Tampa Bay, and Washington, New York (G) were the lowest performing teams
-- **QB Injuries**: Cincinnati, Minnesota, Cleveland, Carolina, and Pittsburgh had the most injuries at QB
-- **Worst Ranked**: Top five in losses also show high ranks in injuries occurance across most significant positions.
+<div class="space-20"></div>
 
-![Worst Teams and Ranks by Occurance of Injury in a Position Group](./images/team_position_summary_final_ranked_updated.jpg){width="100%"}
+## Key Findings on Position Impact
 
+- **Significant Impact**: QBs, RBs, WRs, and Kickers correlate strongly with win probabilities.
+- **Positive Surprises**: TEs and LBs show unexpected positive effects on wins.
+- **Insight**: Positions traditionally seen in support roles may have underrated contributions to team success.
+
+*All findings are statistically significant, highlighting areas for strategic team development.*
+<div class="space-20"></div>
+
+<div class="space-20"></div>
 
 # Conclusion
 
