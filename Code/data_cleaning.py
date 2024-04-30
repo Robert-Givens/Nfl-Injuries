@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 
 # Load the datasets
-results = pd.read_excel("Data/Raw/NFL Schedule.xlsx")
-cap = pd.read_excel("Data/Raw/Team Cap.xlsx")
-status_p = pd.read_excel("Data/Raw/NFL Player Status.xlsx")
+results = pd.read_excel("Data/Raw/nfl_schedule.xlsx")
+cap = pd.read_excel("Data/Raw/team_cap.xlsx")
+status_p = pd.read_excel("Data/Raw/nfl_player_status.xlsx")
 
 # Create a binary 'out' column based on the 'Active_Inactive' status
 status_p['out'] = np.where(status_p['Active_Inactive'] == "Out", 1, 0)
