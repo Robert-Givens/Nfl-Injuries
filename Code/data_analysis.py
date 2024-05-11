@@ -1,16 +1,30 @@
+# Import Libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
+import os
 
-finaldata = pd.read_csv("data/clean/final_data.csv")
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
-# Aggregate the win percentages by position and injury status directly within the plotting command
+# Navigate up one directory from 'code' to the main project folder
+project_dir = os.path.dirname(script_dir)
+
+# Build paths to the data files
+final_data_path = os.path.join(project_dir, 'data', 'clean', 'final_data.csv')
+
+# Load the datasets
+finaldata = pd.read_csv(final_data_path)
+
+# Create columns for the positions
 position_columns = ['rb', 'db', 'ol', 'lb', 'dl', 'qb','k']
+# Create empty index to hold data
 position_win_percs = []
 
+# Loop that averages the win% when an injury occurs by position
 for position in position_columns:
     # Compute average win percentage for each injury status (0 or 1) in the position
     for status in [0, 1]:
@@ -18,17 +32,18 @@ for position in position_columns:
         position_win_percs.append([position, status, avg_win_perc])
 
 # Convert the aggregated data into a DataFrame
-position_win_percs_df = pd.DataFrame(position_win_percs, columns=['Position', 'Injury Status', 'Average Win Percentage'])
+position_win_percs_df = pd.DataFrame(position_win_percs, columns=
+                                     ['Position', 'Injury Status', 'Average Win Percentage'])
 
-# Plotting the corrected data
+# Plotting win% by position
 plt.figure(figsize=(14, 8))
 plt.grid(True, which='major', linestyle='--', linewidth=0.5)
 sns.barplot(x='Position', y='Average Win Percentage', hue='Injury Status', data=position_win_percs_df)
 plt.savefig("poster/images/position_win.png")
-plt.show()
 
 
-# Sum the injuries for the specified positions per week
+
+# Sum weeks where position group is injured
 positions = ['rb', 'db', 'ol', 'lb', 'dl', 'qb','k']
 injuries_by_week = finaldata.groupby('week')[positions].sum()
 
@@ -53,7 +68,7 @@ plt.grid(True)
 # Show plot
 plt.tight_layout()
 plt.savefig("./poster/images/injuries_over_season.png")
-plt.show()
+
 
 # Assuming 'Win' is a binary variable that needs to be aggregated by 'Team'
 # Sum wins by team
@@ -85,9 +100,58 @@ the_table.scale(1.2, 1.2)  # Scale table to fit
 # Optionally display the plot
 plt.savefig("./poster/images/team_position_summary_final_ranked_updated.jpg")
 
+
+position_aliases = {
+    'rb': 'Running Back',
+    'db': 'Defensive Back',
+    'ol': 'Offensive Lineman',
+    'lb': 'Linebacker',
+    'dl': 'Defensive Lineman',
+    'te': 'Tight End',
+    'wr': 'Wide Receiver',
+    'p': 'Punter',
+    'ls': 'Long Snapper',
+    'qb': 'Quarterback',
+    'k': 'Kicker'
+}
+
 # Logistic models
-glm_model1 = smf.glm('win ~ out', data=finaldata, family=sm.families.Binomial()).fit()
-glm_model2 = smf.glm('win ~ out + age', data=finaldata, family=sm.families.Binomial()).fit()
-glm_model3 = smf.glm('win ~ out + age + lag_win_perc', data=finaldata, family=sm.families.Binomial()).fit()
-glm_model4 = smf.glm('win ~ out + C(team) + age + lag_win_perc', data=finaldata, family=sm.families.Binomial()).fit()
-glm_model5 = smf.glm('win ~ out + C(team) + age + win_perc + lag_win_perc', data=finaldata, family=sm.families.Binomial()).fit()
+# Assuming your data and model fitting code from previous steps
+model_formula = 'win ~ ' + ' + '.join(position_aliases.keys())
+glm_model = smf.glm(formula=model_formula, data=finaldata, family=sm.families.Binomial()).fit()
+
+# Extracting and rounding coefficients and other stats
+coefficients = glm_model.params.round(3)
+p_values = glm_model.pvalues.round(3)
+conf_int = glm_model.conf_int().round(3)
+conf_int.columns = ['95% CI Lower', '95% CI Upper']
+
+# Create a summary DataFrame
+summary_df = pd.DataFrame({
+    'Position': coefficients.index,
+    'Coefficient': coefficients.values,
+    'P-value': p_values.values,
+    '95% CI Lower': conf_int['95% CI Lower'],
+    '95% CI Upper': conf_int['95% CI Upper']
+})
+
+# Replace abbreviations with full names
+summary_df['Position'] = summary_df['Position'].replace(position_aliases)
+
+# If 'Intercept' is included and you want to remove it
+summary_df = summary_df[summary_df['Position'] != 'Intercept']
+
+# Print and visualize
+print(summary_df)
+
+# Save to CSV
+summary_df.to_csv('./output/rounded_coefficients_full_names.csv')
+
+# Visualize the table
+fig, ax = plt.subplots(figsize=(12, 6))  # Adjust size as needed
+ax.axis('off')  # Hide axes
+table = ax.table(cellText=summary_df.values, colLabels=summary_df.columns, loc='center', cellLoc='center')
+table.auto_set_font_size(False)
+table.set_fontsize(12)  # Adjust font size for better readability
+table.scale(1.2, 1.2)  # Scale table to fit
+plt.savefig("./poster/images/regression_results_table.jpg")

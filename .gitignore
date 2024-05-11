@@ -1,2 +1,5 @@
 __pycache__/
 .csv
+archive/
+venv/
+data/clean/final_data.csv

@@ -1,10 +1,23 @@
 import pandas as pd
 import numpy as np
+import os
+
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Navigate up one directory from 'code' to the main project folder
+project_dir = os.path.dirname(script_dir)
+
+# Build paths to the data files
+schedule_path = os.path.join(project_dir, 'data', 'raw', 'nfl_schedule.xlsx')
+cap_path = os.path.join(project_dir, 'data', 'raw', 'team_cap.xlsx')
+status_path = os.path.join(project_dir, 'data', 'raw', 'nfl_player_status.xlsx')
 
 # Load the datasets
-results = pd.read_excel("Data/Raw/nfl_schedule.xlsx")
-cap = pd.read_excel("Data/Raw/team_cap.xlsx")
-status_p = pd.read_excel("Data/Raw/nfl_player_status.xlsx")
+results = pd.read_excel(schedule_path)
+cap = pd.read_excel(cap_path)
+status_p = pd.read_excel(status_path)
+
 
 # Create a binary 'out' column based on the 'Active_Inactive' status
 status_p['out'] = np.where(status_p['Active_Inactive'] == "Out", 1, 0)
@@ -102,4 +115,4 @@ finaldata = finaldata[finaldata['season'] != 2012]
 finaldata = finaldata.dropna(subset=['out'])
 
 # Export to CSV
-finaldata.to_csv("Data/Clean/final_data.csv", index=False)
+finaldata.to_csv("data/clean/final_data.csv", index=False)
